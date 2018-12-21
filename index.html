@@ -1,0 +1,107 @@
+<html lang="zh_cn">
+
+<head>
+  <!DOCTYPE html>
+  <html lang="zh-cn">
+
+  <head>
+    <title>bingo-web</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="full-screen" content="yes" />
+    <link rel="stylesheet" href="./css/style.min.css" />
+  </head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+      <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bg bg-blue">
+    <div class="machinecon">
+      <div class="machine">
+        <img src="images/machine.png" />
+        <div class="scroll">
+          <div class="con" id="con">
+            <ul>
+              <li>98</li>
+              <li>2</li>
+              <li>34</li>
+              <li>23</li>
+              <li>56</li>
+              <li>6</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prizecon">
+      <div class="block numcon">
+        <div class="tit">開出號碼</div>
+        <div class="num">
+          <span>47</span>
+        </div>
+      </div>
+      <div class="block">
+        <div class="tit">獲獎名單</div>
+        <div class="name">
+          <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span> <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
+          <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
+          <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span> <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
+          <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
+          <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span> <span>貪吃貓</span><span>太平洋的鱼</span>
+        </div>
+      </div>
+    </div>
+    <div class="btncon">
+      <a class="btn" data-type="start"><img src="images/startbtn.png" /></a>
+    </div>
+    <div id="starsBox"></div>
+    <div class="skin">
+      <a class="skinbtn"><img src="images/skinicon.png" /></a>
+    </div>
+  </div>
+  <script src="./js/main.min.js"></script>
+  <script>
+    $(function () {
+      var preimgs = [
+        "./images/glodbg.jpg",
+        "./images/machine.png",
+        "./images/startbtn.png",
+        "./images/stopbtn.png"
+      ];
+      //图片预加载
+      lottery.setSize({
+        node: ".scroll"
+      });
+      preloadimages(preimgs).done(function (images) {
+        $("#loading").hide();
+        star();
+        skin();
+        lottery.setPrizeSize();
+        lottery.start({
+          stopClick: function (res) {
+            //res 最终数字
+            $('.num').append('<span>' + res + '</span>')
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
+</head>
+
+</html>
