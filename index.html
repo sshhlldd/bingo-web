@@ -28,33 +28,35 @@
     </div>
   </div>
   <div class="bg bg-blue">
-    <div class="machinecon">
-      <div class="machine">
-        <img src="images/machine.png" />
-        <div class="scroll">
-          <div class="con" id="con">
-            <ul>
-              <li>98</li>
-              <li>2</li>
-              <li>34</li>
-              <li>23</li>
-              <li>56</li>
-              <li>6</li>
-            </ul>
+    <div class="container">
+      <div class="block numcon">
+        <div class="tit"><img src="images/num.png"></div>
+        <div class="num">
+          <span>47</span><span>4</span> <span>77</span> <span>23</span>
+        </div>
+      </div>
+      <div class="machinecon">
+        <div class="machine">
+          <img src="images/machine.png" />
+          <div class="scroll">
+            <div class="con" id="con">
+              <ul>
+                <li>98</li>
+                <li>2</li>
+                <li>34</li>
+                <li>23</li>
+                <li>56</li>
+                <li>6</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="prizecon">
-      <div class="block numcon">
-        <div class="tit">開出號碼</div>
-        <div class="num">
-          <span>47</span>
+        <div class="btncon">
+          <a class="btn" data-type="start"><img src="images/startbtn.png" /></a>
         </div>
       </div>
-      <div class="block">
-        <div class="tit">獲獎名單</div>
+      <div class="block namecon">
+        <div class="tit"><img src="images/name.png"></div>
         <div class="name">
           <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span> <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
           <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span>
@@ -63,44 +65,43 @@
           <span>貪吃貓</span><span>太平洋的鱼</span><span>汪星人</span><span>喵喵</span> <span>貪吃貓</span><span>太平洋的鱼</span>
         </div>
       </div>
-    </div>
-    <div class="btncon">
-      <a class="btn" data-type="start"><img src="images/startbtn.png" /></a>
+
     </div>
     <div id="starsBox"></div>
     <div class="skin">
-      <a class="skinbtn"><img src="images/skinicon.png" /></a>
+      <div class="skincon">
+        <a class="skinbtn"><img src="images/skinicon.png" /></a>
+      </div>
     </div>
-  </div>
-  <script src="./js/main.min.js"></script>
-  <script>
-    $(function () {
-      var preimgs = [
-        "./images/glodbg.jpg",
-        "./images/bluebg.jpg",
-        "./images/redbg.jpg",
-        "./images/machine.png",
-        "./images/startbtn.png",
-        "./images/stopbtn.png"
-      ];
-      //图片预加载
-      lottery.setSize({
-        node: ".scroll"
-      });
-      preloadimages(preimgs).done(function (images) {
-        $("#loading").hide();
-        star();
-        skin();
-        lottery.setPrizeSize();
-        lottery.start({
-          stopClick: function (res) {
-            //res 最终数字
-            $('.num').append('<span>' + res + '</span>')
-          }
+    <script src="./js/main.min.js"></script>
+    <script>
+      $(function () {
+        var preimgs = [
+          "./images/glodbg.jpg",
+          "./images/bluebg.jpg",
+          "./images/redbg.jpg",
+          "./images/machine.png",
+          "./images/startbtn.png",
+          "./images/stopbtn.png"
+        ];
+        //图片预加载
+        lottery.setSize({
+          node: ".scroll"
+        });
+        preloadimages(preimgs).done(function (images) {
+          $("#loading").hide();
+          star();
+          skin();
+          lottery.setPrizeSize();
+          lottery.start({
+            stopClick: function (res) {
+              //res 最终数字
+              $('.num').append('<span>' + res + '</span>')
+            }
+          });
         });
       });
-    });
-  </script>
+    </script>
 </body>
 
 </html>
